@@ -7,7 +7,7 @@ int main(int argc, char* argv[])
     parametrRocket.DirectionX = 0.f;
     parametrRocket.DirectionY = 0.f;
     parametrRocket.CoordinatsX = 0.f;
-    parametrRocket.CoordinatsX = 0.f;
+    parametrRocket.CoordinatsY = 0.f;
     parametrRocket.Speed = 3.f;
 
     Parametrs parametrsTarget;
