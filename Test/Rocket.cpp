@@ -7,8 +7,7 @@ void Rocket::SetTarget(Target *target)
 
 Rocket::Rocket(const Vector& Direction, const Vector& Position, float Speed)
     :Movement(Direction,Position,Speed)
-{
-    
+{   
 }
 
 void Rocket::Move(float DeltaTime)

@@ -1,40 +1,51 @@
 #include "Imitation.h"
 
+Imitation::Imitation(const Parametrs& rocket, const Parametrs& target, float DeltaTime)
+{
+    _rocket = new Rocket(Vector(rocket.DirectionX,rocket.DirectionX),
+        Vector(rocket.CoordinatsX, rocket.CoordinatsY), rocket.Speed);
+
+    _target = new Target(Vector(target.DirectionX, target.DirectionY),
+        Vector(target.CoordinatsX, target.CoordinatsY), target.Speed);
+
+    _rocket->SetTarget(_target);
+
+    _deltaTime = std::abs(DeltaTime);
+}
+
 void  Imitation::Update()
 {
-    Rocket rocket(Vector(_directionRocketX,_directionRocketY),
-        Vector(_coordinatsRocketX,_coordinatsRocketY),_speedRocket);
+    if (_deltaTime == 0)
+    {
+        std::cout << "DeltaTime cannot be null";
+        return;
+    }
 
-    Target target(Vector(_directionTargetX,_directionTargetY),
-        Vector(_coordinatsTargetX,_coordinatsTargetY),_speedTarget);
-
-    rocket.SetTarget(&target);
- 
     while(_result)
-    {      
-        target.Move(_deltaTime);
-        rocket.Move(_deltaTime);
+    {    
+        _target->Move(_deltaTime);
+        _rocket->Move(_deltaTime);
         
-        _currentDistantRocketAndTarget = Distance(rocket.GetPosition(),target.GetPosition());
+        _currentDistantRocketAndTarget = Distance(_rocket->GetPosition(),_target->GetPosition());
 
         std::cout<< "Distance = " << _currentDistantRocketAndTarget << '\n';
         
-        if (!rocket.IsAlive())
+        if(!_rocket->IsAlive())
         {
             std::cout << "Rocket destroyed";
             _result = false;
         }
 
-        if(rocket.GetRadius() >= _currentDistantRocketAndTarget)
+        if((_rocket->GetRadius() >= _currentDistantRocketAndTarget)||_rocket->IsAhead())
         {
             std::cout<<"Hit the target";
             _result = false;
         }    
-
-        if (rocket.IsAhead())
-        {
-            std::cout << "Hit the target";
-            _result = false;
-        }
     }
+}
+
+Imitation::~Imitation()
+{
+    delete _rocket;
+    delete _target;
 }

@@ -14,7 +14,7 @@ public:
     {
         this->Direction = Direction;
         this->Position = Position;
-        this->Speed = Speed;
+        this->Speed = std::abs(Speed);
     }
 
     Movement() = default;
