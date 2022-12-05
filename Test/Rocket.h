@@ -5,8 +5,8 @@
 class Rocket : public Movement
 {
 private:
-    const float _radius = 0.01f;
     Target *_target = nullptr;
+    const float _radius = 0.5f;
     int _time = 50;
 
 public:

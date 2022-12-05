@@ -1,6 +1,6 @@
 #include "Target.h"
 
-Target::Target(const Vector& Direction, const Vector& Position, float Speed)
+Target :: Target(const Vector& Direction, const Vector& Position, float Speed)
     :Movement(Direction,Position,Speed)
 {
 }

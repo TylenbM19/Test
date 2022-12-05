@@ -20,7 +20,7 @@ Vector operator-(const Vector &Vec1,const Vector &Vec2)
     return Vector(Vec1.X - Vec2.X,Vec1.Y - Vec2.Y);
 }
 
-Vector normalize (const Vector& Vec)
+Vector Normalize (const Vector& Vec)
 {
     float Scale = Length(Vec);
     return Vector( Vec.X / Scale,Vec.Y / Scale);

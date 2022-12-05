@@ -18,7 +18,7 @@ public:
     Vector operator+(const Vector &Vec1,const Vector &Vec2);
     Vector operator*(const Vector&Vec,float Value);
     Vector operator-(const Vector &Vec1,const Vector &Vec2);
-    Vector normalize(const Vector &Vec);
+    Vector Normalize(const Vector &Vec);
     float DotProduct(const Vector& Vec, const Vector& Vec2);
     float Length(const Vector &Vec);
     void Show(const Vector &Vec);

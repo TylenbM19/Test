@@ -2,8 +2,12 @@
 
 void  Imitation::Update()
 {
-    Rocket rocket(Vector(0.f,1.f),Vector(0.f,0.f),5.f);
-    Target target(Vector(1.f,0.f),Vector(0.f,15.f),2.f);
+    Rocket rocket(Vector(_directionRocketX,_directionRocketY),
+        Vector(_coordinatsRocketX,_coordinatsRocketY),_speedRocket);
+
+    Target target(Vector(_directionTargetX,_directionTargetY),
+        Vector(_coordinatsTargetX,_coordinatsTargetY),_speedTarget);
+
     rocket.SetTarget(&target);
  
     while(_result)
@@ -13,7 +17,7 @@ void  Imitation::Update()
         
         _currentDistantRocketAndTarget = Distance(rocket.GetPosition(),target.GetPosition());
 
-        std::cout << _currentDistantRocketAndTarget << '\n';
+        std::cout<< "Distance = " << _currentDistantRocketAndTarget << '\n';
         
         if (!rocket.IsAlive())
         {

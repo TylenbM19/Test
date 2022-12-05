@@ -14,7 +14,7 @@ Rocket::Rocket(const Vector& Direction, const Vector& Position, float Speed)
 void Rocket::Move(float DeltaTime)
 {
     Vector TargetDirection = _target->GetPosition() - Position;
-    Direction = normalize(TargetDirection);
+    Direction = Normalize(TargetDirection);
     Position = Position + Direction * Speed * DeltaTime;
     _time--;
 }
